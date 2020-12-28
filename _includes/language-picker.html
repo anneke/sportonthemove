@@ -1,0 +1,40 @@
+<div class="translate">
+  <div id="language-choices">
+    <span>
+      Translate this to:
+    </span>
+    <ul>
+      {% for lang in site.data.languages %}
+        {% assign language = lang[1] %}
+        <li>
+          {%- if lang[0] != page.lang -%}
+
+          {% assign url_size = page.url | remove:'/index.html' | split: '/' %}
+          {%- if page.error -%}
+            {%- assign lang_prefix = lang[0] -%}
+            {%- assign slug = '/404.html' %}
+          {%- elsif url_size.size > 2 -%}
+            {%- assign lang_prefix = lang[0] -%}
+            {%- assign slug = page.url | replace_first: page.lang, '' | replace_first '//', '/' | remove:'.html'%}
+           {%- else -%}
+            {%- assign lang_prefix = lang[0] -%}
+            {%- assign slug = '/' %}
+          {% endif %}
+            <a
+              href="{{ site.baseurl }}/{{ lang_prefix }}{{ slug }}"
+              hreflang="{{ lang[0] }}"
+              lang="{{ lang[0] }}"
+            >
+          {% endif %}
+          {{ language.label }}
+          {% if lang[0] == page.lang %}
+            (current)
+          {% endif %}
+          {% if lang[0] != page.lang %}
+          </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

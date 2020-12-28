@@ -1,0 +1,37 @@
+{%- assign timeslug = site.time | replace_first: " ", "T" | replace: " ", "" -%}
+{%- assign langSlug = site.baseurl | append: '/' -%}
+{%- if page.lang -%}
+  {%- assign langSlug = site.baseurl | append: '/' | append: page.lang -%}
+{%- endif -%}
+
+<!DOCTYPE html>
+<html lang="{{page.lang}}">
+<!--
+  This website is generated at {{ site.time }}.
+-->
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <main class="content-center" id="content">
+    {% if page.showBreadCrumbs %}
+      {% include breadcrumbs.html title=page.title collection=page.collection %}
+    {% endif %}
+    
+    <div>
+      <h2 id="{{ page.title | slugify }}">{{ page.title }}</h2>
+      {{ content }}
+
+      <button class="snipcart-add-item"
+        data-item-id="starry-night"
+        data-item-price="79.99"
+        data-item-url="/paintings/starry-night"
+        data-item-description="High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh."
+        data-item-image="/assets/images/starry-night.jpg"
+        data-item-name="The Starry Night">
+        Add to cart
+      </button>
+    </div>
+  </main>
+  {% include footer.html %}
+</body>
+</html>

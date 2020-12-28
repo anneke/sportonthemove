@@ -1,0 +1,32 @@
+<header>
+  <div class="skiplinks">
+    <a href="#content">
+      Skip to content
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="header">
+        <div class="site-logo">
+          <a href="{{ langSlug }}">
+            <img src="{{ site.baseurl }}/favicon.ico" alt="Go back to the homepage" width="200" height="200">
+          </a>
+        </div>
+        <h1 class="site-title">
+          {{ site.title }}
+        </h1>
+    </div>
+    {{ lang[0] }}
+    <nav>
+      <ul>
+        <li><a href="{{ langSlug }}/">Home</a></li>
+        <li><a href="{{ langSlug }}/news">News</a></li>
+        <li><a href="{{ langSlug }}/donate">Donate</a></li>
+      </ul>
+    </nav>
+
+  {% include language-picker.html %}
+  </div>
+</header>
+
+<div class="container">

@@ -1,0 +1,38 @@
+{%- assign timeslug = site.time | replace_first: " ", "T" | replace: " ", "" -%}
+{%- assign langSlug = site.baseurl | append: '/' -%}
+{%- if page.lang -%}
+  {%- assign langSlug = site.baseurl | append: '/' | append: page.lang -%}
+{%- endif -%}
+
+<!DOCTYPE html>
+<html lang="{{page.lang}}" {% if page.lang == 'ar' %}dir="rtl"{% endif %}>
+<!--
+  This website is generated at {{ site.time }}.
+-->
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <main>
+    {% if page.showBreadCrumbs %}
+      {% include breadcrumbs.html title=page.title collection=page.collection %}
+    {% endif %}
+    
+    <div class="content-block">
+      <h1>{{ page.title }}</h1>
+
+      {% assign blogs = site.posts | where:"lang", page.lang | sort: "index"  %}
+
+      <ul>
+        {% for blog in blogs %}
+          <li>
+              <a href="{{ site.baseurl }}{{ blog.url }}">
+                  {{ blog.title }}
+              </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+  </main>
+  {% include footer.html %}
+</body>
+</html>

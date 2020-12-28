@@ -1,0 +1,50 @@
+{%- assign langSlug = site.baseurl | append: '/' -%}
+{%- if page.lang -%}
+  {%- assign langSlug = site.baseurl | append: '/' | append: page.lang | append: '/' -%}
+{%- endif -%}
+
+<footer>
+  <form>
+    <label>Amount</label>
+    <input id="quantity" type="number" value="0"></input>
+    <button
+      id="donation"
+      class="snipcart-add-item"
+      data-item-id="donation"
+      data-item-price='{"usd": 1, "eur": 1, "nad": 20}'
+      data-item-quantity="1"
+      data-item-stackable="never"
+      data-item-shippable="false"
+      data-item-taxable="false"
+      data-item-url="/"
+      data-item-description="Doe een bijdrage aan het goede doel"
+      data-item-image="/assets/images/starry-night.jpg"
+      data-item-name="The Starry Night"
+      data-item-custom2-name="Opmerkingen">
+      Donate <span id="amountInline"></span>
+    </button>
+    <script>
+      const button = document.querySelector('#donation')
+      const amountInline = document.querySelector('#amountInline')
+      const quantity = document.querySelector('#quantity')
+      quantity.addEventListener('change', () => {
+        // Sets the default quantity when adding the item
+        button.setAttribute('data-item-quantity', quantity.value)
+        amountInline.innerHTML = ' ' + quantity.value
+      })
+    </script>
+  </form>
+
+
+
+  <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
+
+  <div hidden id="snipcart" data-api-key="ZDkyZGFkZDAtY2EwNi00MGEzLTg0MjktZWNhOWExZDdlOWNhNjM3NDQ4MzE4MjI4NDE3NzQ3" 
+  {% if page.lang == 'nl' %}
+  data-currency="eur"
+  {% elsif page.lang == 'en' %}
+  data-currency="usd"
+  {% endif %}></div>
+</footer>
+
+{% include footer-js.html %}

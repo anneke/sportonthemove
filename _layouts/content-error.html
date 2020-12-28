@@ -1,0 +1,27 @@
+{%- assign timeslug = site.time | replace_first: " ", "T" | replace: " ", "" -%}
+{%- assign langSlug = site.baseurl | append: '/' -%}
+{%- if page.lang -%}
+  {%- assign langSlug = site.baseurl | append: '/' | append: page.lang -%}
+{%- endif -%}
+
+<!DOCTYPE html>
+<html lang="{{page.lang}}">
+<!--
+  This website is generated at {{ site.time }}.
+-->
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <main class="content-center" id="content">
+    {% if page.showBreadCrumbs %}
+      {% include breadcrumbs.html title=page.title collection=page.collection %}
+    {% endif %}
+    
+    <div>
+      <h2 id="{{ page.title | slugify }}">{{ page.title }}</h2>
+      {{ content }}
+    </div>
+  </main>
+  {% include footer.html %}
+</body>
+</html>

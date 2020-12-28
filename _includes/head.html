@@ -1,0 +1,37 @@
+<head>
+    <meta charset="UTF-8">
+    <title>{% if page.title != '' %}{{ page.title }} - {% endif %}{{ site.data.translations.page-title[page.lang] }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href="{{ site.baseurl }}/css/main.css?v={{ timeslug }}" rel="stylesheet">
+
+    <link rel="preload" href="{{ site.baseurl }}/fonts/Montserrat-Regular.woff" as="font" type="font/woff" crossorigin>
+    <link href="{{ site.baseurl }}/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+    <meta name="description" content="{{ site.description }}">
+    <meta name="theme-color" content="#fff">
+
+    <link rel="alternate" hreflang="nl-NL" href="https://www.sportonthemove.org" />
+    <link rel="alternate" hreflang="en-GB" href="https://www.sportonthemove.org/en" />
+    <link rel="alternate" hreflang="nam" href="https://www.sportonthemove.org/nam" />
+
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:title" content="{% if page.title != '' %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta property="og:description" content="{{ site.description }}"/>
+    <meta property="og:image" content="https://www.sportonthemove.org/favicon.ico">
+    <meta property="og:updated_time" content="{{ site.time | date: "%s" }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ page.permalink }}">
+    <meta name="og:image:alt" content="Sport on the move logo" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{% if page.title != '' %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="twitter:description" content="{{ site.description }}" />
+    <meta name="twitter:image" content="https://www.sportonthemove.org/favicon.ico" />
+    <meta name="twitter:image:alt" content="Sport on the move logo" />
+
+    <link rel="preconnect" href="https://app.snipcart.com">
+    <link rel="preconnect" href="https://cdn.snipcart.com">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css" />
+</head>

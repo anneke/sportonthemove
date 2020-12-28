@@ -1,0 +1,23 @@
+{%- assign timeslug = site.time | replace_first: " ", "T" | replace: " ", "" -%}
+{%- assign langSlug = site.baseurl | append: '/' -%}
+{%- if page.lang -%}
+  {%- assign langSlug = site.baseurl | append: '/' | append: page.lang -%}
+{%- endif -%}
+
+<!DOCTYPE html>
+<!--
+  Generated at {{ site.time }}.
+-->
+<html lang="{{page.lang}}">
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <main id="content">
+    <div class="container">
+      <p>{{ title }}</p>
+      {{ content }}
+    </div>
+  </main>
+  {% include footer.html %}
+</body>
+</html>

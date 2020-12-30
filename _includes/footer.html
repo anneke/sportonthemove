@@ -16,10 +16,10 @@
       data-item-stackable="never"
       data-item-shippable="false"
       data-item-taxable="false"
-      data-item-url="/"
+      data-item-url="/sportonthemove"
       data-item-description="Doe een bijdrage aan het goede doel"
       data-item-image="/assets/images/starry-night.jpg"
-      data-item-name="The Starry Night"
+      data-item-name="Donatie aan Sport On The Move"
       data-item-custom2-name="Opmerkingen">
       Donate <span id="amountInline"></span>
     </button>
@@ -28,14 +28,11 @@
       const amountInline = document.querySelector('#amountInline')
       const quantity = document.querySelector('#quantity')
       quantity.addEventListener('change', () => {
-        // Sets the default quantity when adding the item
         button.setAttribute('data-item-quantity', quantity.value)
         amountInline.innerHTML = ' ' + quantity.value
       })
     </script>
   </form>
-
-
 
   <script async src="https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"></script>
 
